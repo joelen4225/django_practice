@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang = "en">
+    
+    <head>
+        
+        <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            .custom-container {
+                height: 700px
+            }
+        </style>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Polls</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                {% if latest_question_list %}
+                <ul>
+                {% for question in latest_question_list %}
+                    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                {% endfor %}
+                </ul>
+                {% else %}
+                    <p>No polls are available.</p>
+                {% endif %}
+            </div>
+          </nav>
+    </head>
+    <body>
+        <div class="container custom-container">
+            <img src = "polls/images/ski-flip.jpg" class = "img-rounded" alt = "Ski Guy">
+            <h1>This is an image of a guy hitting a flip on skis.</h1>
+            <p>Not sure why I chose this image but it is very cool. Take a look at the "What's up?" poll!</p>
+          </div>
+
+    </body>
+    <footer>
+        <div class="card text-center">
+            <div class="card-header">
+              Footer
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Brought to You By Joe Leonard</h5>
+              <p class="card-text">2024 Kabink, All rights reserved.</p>
+            </div>
+            <div class="card-footer text-body-secondary">
+              CS 3240
+            </div>
+          </div>
+    </footer>
+</html>
+
+
